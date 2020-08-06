@@ -1,7 +1,7 @@
 FROM scratch
 
-COPY /go/bin/hello /go/bin/hello
+COPY bin/hello hello
 
 EXPOSE 8000
 
-ENTRYPOINT ["/go/bin/hello"]
+ENTRYPOINT ["/hello"]
