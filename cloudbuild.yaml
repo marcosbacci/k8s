@@ -9,17 +9,9 @@ steps:
   args: ['test','hello']
   env: ['GOPATH=.']
 
-- id: "Logout"
-  name: 'gcr.io/cloud-builders/docker'
-  args: ['logout']
-
-- id: "Login"
-  name: 'gcr.io/cloud-builders/docker'
-  args: ['login']
-
 - id: "Build"
   name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '--tag=marcosbacci/k8s', '.']
+  args: ['build', '--tag=gcr.io/$PROJECT_ID/k8s', '.']
 
 images:
-- "marcosbacci/k8s:latest"
+- "gcr.io/$PROJECT_ID/k8s"
