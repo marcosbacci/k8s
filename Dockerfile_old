@@ -1,20 +1,20 @@
 FROM golang:alpine AS builder
 RUN apk update && apk add --no-cache git
 
-WORKDIR $GOPATH/src/helloworld/
+WORKDIR $GOPATH/src/helloworld/hello
 
-COPY *.go .
+COPY src/hello/*.go .
 
 ENV CGO_ENABLED 0
 RUN go get -d -v
-RUN go build -ldflags="-s -w" -o /go/bin/hello
+RUN go build -ldflags="-s -w" -o /go/bin
 
 FROM scratch
 
-COPY --from=builder /go/bin/hello /go/bin/hello
+COPY --from=builder /go/bin/hello /hello
 
 EXPOSE 8000
 
-ENTRYPOINT ["/go/bin/hello"]
+ENTRYPOINT ["/hello"]
 
 #ENTRYPOINT ["go", "run", "main.go"]
