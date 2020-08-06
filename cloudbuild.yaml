@@ -9,6 +9,10 @@ steps:
   args: ['test','hello']
   env: ['GOPATH=.']
 
+- id: "Login"
+  name: 'gcr.io/cloud-builders/docker'
+  args: ['login', 'docker.io']
+
 - id: "Build"
   name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--tag=marcosbacci/k8s', '.']
