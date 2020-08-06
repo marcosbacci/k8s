@@ -9,6 +9,10 @@ steps:
   args: ['test','hello']
   env: ['GOPATH=.']
 
+- id: "Logout"
+  name: 'gcr.io/cloud-builders/docker'
+  args: ['logout']
+
 - id: "Login"
   name: 'gcr.io/cloud-builders/docker'
   args: ['login']
