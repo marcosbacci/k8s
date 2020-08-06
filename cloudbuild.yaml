@@ -1,16 +1,17 @@
 steps:
-        - id: "Instalando"
-          name: 'gcr.io/cloud-builders/go'
-          args: ['install', 'hello']
-          env: ['GOPATH=.']
+- id: "Instalando"
+  name: 'gcr.io/cloud-builders/go'
+  args: ['install', 'hello']
+  env: ['GOPATH=.']
 
-        - id: "Teste unitário"
-          name: 'gcr.io/cloud-builders/go'
-          args: ['test','hello']
-          env: ['GOPATH=.']
+- id: "Teste unitário"
+  name: 'gcr.io/cloud-builders/go'
+  args: ['test','hello']
+  env: ['GOPATH=.']
 
-        - name: 'gcr.io/cloud-builders/docker'
-          args: ['build', '--tag=marcosbacci/k8s', '.']
+- id: "Build"
+  name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '--tag=gcr.io/$PROJECT_ID/k8s', '.']
 
-          images:
-          - 'marcosbacci/k8s'
+images:
+- "gcr.io/$PROJECT_ID/k8s"
