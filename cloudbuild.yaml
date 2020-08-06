@@ -11,7 +11,7 @@ steps:
 
 - id: "Login"
   name: 'gcr.io/cloud-builders/docker'
-  args: ['login', 'docker.io']
+  args: ['login']
 
 - id: "Build"
   name: 'gcr.io/cloud-builders/docker'
